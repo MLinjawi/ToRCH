@@ -7,8 +7,9 @@ import java.sql.SQLException;
 /**
  * connect to database class
  */
-public class DataBaseConn { // private final String Driver = "com.mysql.jdbc.Driver";
-							// private final String Driver = "com.mysql.jdbc.Driver";
+
+public class DataBaseConn { 
+	
 	private final String Driver = "com.mysql.cj.jdbc.Driver";
 
 	private final String ConnectionString = "jdbc:mysql://localhost/";

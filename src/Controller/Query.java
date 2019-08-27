@@ -28,17 +28,24 @@ public class Query extends DataBaseConn {
 
 		try {
 			stmt = conn.createStatement();
-			// rs = stmt.executeQuery(" SELECT * FROM ROBOTS;");
+			
+			
 			sqlQ = "SELECT * FROM ROB;";
+		
 			System.out.println(sqlQ);
-			rs = stmt.executeQuery(sqlQ);
+			rs = stmt.executeQuery(sqlQ);			// rs = stmt.executeQuery(" SELECT * FROM ROBOTS;");
+			
+			
 			// System.out.println(rs);
 			// int rowCount = rs.last() ? rs.getRow() : 0;
 			// System.out.println("rowCount"+ " "+rowCount);
+			
 			System.out.println("The list is :");
+			
 			// System.out.println(" first "+ rs.first());
 			// System.out.println("next" + rs.next());
-			while (rs.next()) { // System.out.println("I am in");
+			
+			while (rs.next()) {
 				String S = rs.getString("Name");
 				result.add(S);
 				System.out.println(S);
@@ -235,6 +242,7 @@ public class Query extends DataBaseConn {
 * @return list of robot objects
 * @author MLinjawi
 */
+	
 	public boolean insertRecord(String query) {
 		boolean success=false;
 		
@@ -244,12 +252,12 @@ public class Query extends DataBaseConn {
 		try {
 			conn = connectToDatabase();
 			stmt = conn.createStatement();
-			System.out.println("INSERT QUERY:"+query);
+			System.out.println("From class Query, the INSERT QUERY command is:" + query);
 			
 			stmt.executeUpdate(query);
 			success=true;
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("From class Query, the SQLException message is:" + e.getMessage());
 		} finally {
 
 			if (stmt != null) {
@@ -269,28 +277,77 @@ public class Query extends DataBaseConn {
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
+	
+//////////////////////////////////////////////////////////////////
+	/**
+	* Method getRobots from DB
+	* 
+	* @param sqlQ : Select statement
+	* @return list of robot objects
+	* @author MLinjawi
+	*/
+
+		public void Command(){
+		boolean success=false;
+		
+		Connection conn = null;
+		Statement stmt = null;
+		
+		try {
+			conn = connectToDatabase();
+			stmt = conn.createStatement();
+			
+			String sqlQ;
+			sqlQ = "DELETE FROM ROB WHERE ID > 23;";
+			
+			stmt.executeUpdate(sqlQ);
+			success=true;
+			} 
+		catch (SQLException e) 
+			{
+			System.out.println("From class Query, the SQLException message is:" + e.getMessage());
+			} 
+		finally {
+			if (stmt != null) 
+				{
+				try {
+					stmt.close();
+					} 
+				catch (SQLException e)
+					{
+					e.printStackTrace();
+					}
+				}
+			disconnectFromDatabase(conn);
+			}
+		
+	//	return success;
+		
+		}
+	
+	
+	
+	
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+	
 
 	public static void main(String[] args)
 
 	{
-		System.out.println("I am in Main");
+		System.out.println("I am in Main of the Query class");
 		// TODO Auto-generated method stub
 		Query q = new Query();
 		q.getRobots("SELECT * FROM ROB;");
-
+	//	q.Command();
 		q.getRobotsObjectList("SELECT * FROM ROB;");
 	}
 
 }
-//************************************************************************888
-/*
- * public List<TWEET> getTweets(String keyword) { List<TWEET> result = new
- * ArrayList<TWEET>(); Connection conn = connectToDatabase(); Statement stmt =
- * null; ResultSet rs = null; try { stmt = conn.createStatement(); rs =
- * stmt.executeQuery("SELECT * FROM tweet WHERE message LIKE '%"+ keyword +
- * "%';"); while (rs.next()) { TWEET t = new TWEET();
- * t.setTweetID(rs.getLong("tweetID")); t.setUserID(rs.getLong("userID"));
- * t.setMessage(rs.getString("message")); result.add(t); } } catch (SQLException
- * e) { e.printStackTrace(); } finally { disconnectFromDatabase(conn); } return
- * result; } }
- */
+//************************************************************************
+//  Use q.command to delete all added robot for testing the program 
+// comment the command after deleting the robots and to execute the robot capabilities file 
+// 
+//

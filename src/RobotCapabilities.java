@@ -40,6 +40,13 @@ import javax.swing.event.ListSelectionListener;
 import Controller.Query;
 import Model.Robots;
 
+/**
+ * class fram robot capabilities  contain all the  second layer capabilities available in ToRCH. 
+ * @param Robot object contain all values to be inserted  
+ * @return  nothing 
+ * @author MLinjawi
+ */
+
 public class RobotCapabilities {
 
 	// ######################################################################################
@@ -49,21 +56,17 @@ public class RobotCapabilities {
 	// ######################################################################################
 	private JFrame RPframe;
 	Controller.Query q = new Query();
-//26 file not used	Controller.AddRobot AR = new AddRobot();
-	private JTextField txtName;
+
+	private JTextField txtName = new JTextField();   // to insert the name of a new robot 
 	private JTextArea txtrRobotInfo;
 	Robots AddRob;
-
-// 26 item lisener	HandlerClass h = new HandlerClass();
+	String insertvalue;
 
 	JButton buttonADD, btnSave;
 
 	JPanel panelPercep, panelInterp, panelTask, panelAction, panelGeneral, panelInter;
-	JLabel lblName, lblObjPercep;// lblID,
-//	JTextField txtID;
-	
-//	JCheckBox cbSocial, cbPhyscial, cbCognitive;
-//26 upper line
+	JLabel lblName, lblObjPercep;
+
 	
 	JComboBox<String> comBxPhObjPercep, comBxDigiInfoPercep, comBxSocAgPercep, comBxSocEmPercep, comBxSocBehPercep,
 			comBxGenPercep, comBxGenEnvPercep, comBxGenSelLocPercep, comBxPhObjLocPercep, comBxSocAgLocPercep, comBxPhTrackercep,
@@ -77,21 +80,14 @@ public class RobotCapabilities {
 	JComboBox<String> comBxSocHRIFB, comBxSocHRIM, comBxInterLExt, comBxPhObjInterac, comBxCogR2R, comBxCogR2Sys, comBxPhyinter,
 			comBxSocCogInterLearning, comBxSocHRICogAbility, comBxHRIMethIner, comBxProx;
 
-	DefaultListModel<String> listModel;// keeps the list of the skills JList
+	JTextField txtOtherSkill;
+	
+	DefaultListModel<String> listModel;				// keeps the list of all skills in the JList
 	JLabel lblMessage;
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	// 12 Sept Add JComboBox in Panel
-
-	// int ObjPerceplevel = 0, DigiInfoPerceplevel = 0, SoAgPerceplevel = 0,
-	// EmPerceplevel = 0, SoBehPerceplevel = 0,
-	// GenPerceplevel = 0, EnvPerceplevel = 0, SelLocPerceplevel = 0,
-	// ObjLocPerceplevel = 0, SoAgLocPerceplevel = 0, Trackerceplevel = 0,
-	// ModPerceplevel = 0;
-	// int
-
-	// 12 Sept Add define levels variable for capabilities
+	// 
 
 	String pleaseSelect = "Please Select";
 	List<Object> guiComponentList = new ArrayList<>();
@@ -407,7 +403,7 @@ public class RobotCapabilities {
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		// 9 Object Location Perception label
-		JLabel lblObjLocPercep = new JLabel("Object Location ");
+		JLabel lblObjLocPercep = new JLabel("Object Location");
 		lblObjLocPercep.setForeground(new Color(0, 0, 255));
 		lblObjLocPercep.setFont(new Font("Dialog", Font.PLAIN, 14));
 		lblObjLocPercep.setBounds(16, 60, 112, 28);
@@ -967,7 +963,7 @@ public class RobotCapabilities {
 		guiComponentList.add(comBxPhEnviPhys);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		// 6 Envisioning socialy label
-		JLabel lblEnviSocial = new JLabel("Envisioning Socialy ");
+		JLabel lblEnviSocial = new JLabel("Envisioning Socialy");
 		lblEnviSocial.setForeground(new Color(0, 128, 0));
 		lblEnviSocial.setFont(new Font("Dialog", Font.PLAIN, 14));
 		lblEnviSocial.setBounds(926, 49, 138, 28);
@@ -1115,19 +1111,16 @@ public class RobotCapabilities {
 		setSelectOption(comBxSysDepend);
 		panelGeneral.add(comBxSysDepend);
 		guiComponentList.add(comBxSysDepend);
+		
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
-		// ######################################################################################
-		// ######################################################################################
 		// ######################################################################################
 		// #####################################################################################
 		// Panel interaction
 		// ######################################################################################
 		// ######################################################################################
-		// ######################################################################################
-		// #####################################################################################
-
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		
 		// Interaction capabilities Panel 14
 		// JPanel
 		panelInter = new JPanel();
@@ -1139,7 +1132,7 @@ public class RobotCapabilities {
 		panelInter.setBackground(Color.LIGHT_GRAY);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		// 1 HRI Feed back
-		JLabel lblHRIFB = new JLabel("HRI Feed back ");
+		JLabel lblHRIFB = new JLabel("HRI Feed back");
 		lblHRIFB.setForeground(new Color(0, 128, 0));
 		lblHRIFB.setFont(new Font("Dialog", Font.PLAIN, 14));
 		lblHRIFB.setBounds(836, 22, 114, 28);
@@ -1401,7 +1394,8 @@ public class RobotCapabilities {
 		lblSkill.setBounds(16, 85, 47, 28);
 		panelInter.add(lblSkill);
 
-		JTextField txtOtherSkill = new JTextField();
+		
+		txtOtherSkill = new JTextField();
 		txtOtherSkill.setFont(new Font("Century", Font.PLAIN, 18));
 		txtOtherSkill.setBounds(303, 211, 140, 28);
 		txtOtherSkill.setColumns(10);
@@ -1419,6 +1413,8 @@ public class RobotCapabilities {
 		JScrollPane listScroller = new JScrollPane(skillList);
 		listScroller.setPreferredSize(new Dimension(250, 120));
 		paneSkill.add(listScroller);
+		
+		
 		skillList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent event) {
 				if (!event.getValueIsAdjusting()) {
@@ -1469,6 +1465,7 @@ public class RobotCapabilities {
 		cbgIntelle.add(checkBoxInt2);
 		cbgIntelle.add(checkBoxInt3);
 		cbgIntelle.add(checkBoxInt4);
+		
 		guiComponentList.add(cbgIntelle);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1485,7 +1482,8 @@ public class RobotCapabilities {
 		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		
 		// 1 Best fit Scroll pane result
 		JScrollPane BestFitResultScrollPane = new JScrollPane();
 		BestFitResultScrollPane.setBounds(1132, 603, 290, 150);
@@ -1512,11 +1510,11 @@ public class RobotCapabilities {
 				// Button best fit with all action listener methods
 				// **************************************************************************************
 				// **************************************************************************************
-				// Step1 The sql statement query for all robots the result of the query is saved
+				//  The sql statement query for all robots the result of the query is saved
 				// Array List called "RobotObjectsresult". each row present robot type object.
 				String query;
 				// statem = "SELECT * FROM ROBOT ;";
-				query = "SELECT * FROM ROB WHERE ";// where (PObj = 1) AND (PDigInfo = 1) AND (PSoAg = 1)
+				query = "SELECT * FROM ROB WHERE ";
 				// Build WHERE statement
 
 				for (int i = 0; i < columnNamesList.size(); i++) {
@@ -1576,11 +1574,11 @@ public class RobotCapabilities {
 				robotObjectsresult = q.getRobotsObjectList(query);
 
 				// ******************************************************************************
-				// Step6
+				// 
 				String robotName, S;
-				// bestFitTextArea.append("--------------------------------------------\n");
-				bestFitTextArea.append(" List of  Robots                              ");
-				bestFitTextArea.append("--------------------------------------------\n");
+				// bestFitTextArea.append("-------------------------------------\n");
+				   bestFitTextArea.append(" List of  Robots                       ");
+				   bestFitTextArea.append("-------------------------------------\n");
 
 				for (Robots robot : robotObjectsresult) {
 					bestFitTextArea.append(robot.getRobotIdentity() + "\n");
@@ -1588,47 +1586,135 @@ public class RobotCapabilities {
 
 			}// action listener
 		}); // end of action performed
-		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&& Best fit clear Search area
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		// 4 Best fit clear Search area
-		JButton btnClearList = new JButton("Clear list");
-		btnClearList.setFont(new Font("Century", Font.BOLD, 14));
-		btnClearList.setForeground(new Color(0, 0, 139));
-		btnClearList.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				bestFitTextArea.setText("");
-			}
-		});
-		btnClearList.setBounds(431, 16, 102, 37);
-		RPframe.getContentPane().add(btnClearList);
-		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+			JButton btnClearList = new JButton("Clear list");
+			btnClearList.setFont(new Font("Century", Font.BOLD, 14));
+			btnClearList.setForeground(new Color(0, 0, 139));
+			btnClearList.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					bestFitTextArea.setText("");
+				}
+			});
+			btnClearList.setBounds(431, 16, 102, 37);
+			RPframe.getContentPane().add(btnClearList);
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&& Add Robot
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// 5 Add Robot
 		buttonADD = new JButton("New Robot");
-		btnSave = new JButton("Save");
-		btnSave.setVisible(false);
-
-		buttonADD.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				JButton btnVerify = new JButton("Adjust & verify "); btnVerify.setBounds(24, 98, 259, 49);
-//				panelAdd.add(btnVerify); btnVerify.setForeground(new Color(0, 204, 0));
-//			 btnVerify.setFont(new Font("Century", Font.BOLD, 25));
-
-				if (buttonADD.getText().equals("New Robot")) {
-					initNewRobot();
-				} else if (buttonADD.getText().equals("Cancel")) {
-					cancelNewRobot();
-
-				}
-
-			}
-		});
 		buttonADD.setForeground(new Color(204, 0, 0));
 		buttonADD.setBackground(Color.WHITE);
 		buttonADD.setFont(new Font("Dialog", Font.BOLD, 20));
 		buttonADD.setBounds(1298, 13, 137, 35);
-		RPframe.getContentPane().add(buttonADD);
+		RPframe.getContentPane().add(buttonADD);			
 
-		btnSave.addActionListener(new ActionListener() {
+		
+		
+		
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+		//	adding	Name lable  					
+			lblName = new JLabel("Name");												// delete this line of code to erase the button Add Robot  25 Aug
+			lblName.setFont(new Font("Century", Font.PLAIN, 20));						// delete this line of code to erase the button Add Robot  25 Aug
+			lblName.setBounds(874, 16, 90, 37);											// delete this line of code to erase the button Add Robot  25 Aug
+			RPframe.getContentPane().add(lblName);														// delete this line of code to erase the button Add Robot  25 Aug
+			
+			lblName.setVisible(false);
+
+			
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+		//	adding	JTextField for Name  to enter robot name via text box 
+			txtName = new JTextField();													// delete this line of code to erase the button Add Robot  25 Aug
+			txtName.setFont(new Font("Century", Font.PLAIN, 18));									// delete this line of code to erase the button Add Robot  25 Aug	
+			txtName.setBounds(930, 16, 205, 37);													// delete this line of code to erase the button Add Robot  25 Aug
+			txtName.setText("Enter name");															// delete this line of code to erase the button Add Robot  25 Aug
+			txtName.setColumns(10);																	// delete this line of code to erase the button Add Robot  25 Aug	
+			txtName.setVisible(true);																// delete this line of code to erase the button Add Robot  25 Aug												
+			txtName.setBounds(950, 16, 102, 37);													// delete this line of code to erase the button Add Robot  25 Aug
+			RPframe.getContentPane().add(txtName);	
+			txtName.setVisible(false);	
+			
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+		//	adding	botton save 
+			btnSave = new JButton("Save");		
+			btnSave.setVisible(false);
+			
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+		//	
+			
+			
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// addActionListener for the robot buttonADD  
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+		buttonADD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+							
+
+				if (buttonADD.getText().equals("New Robot")) 
+				{
+					buttonADD.setText("Cancel");
+					lblName.setVisible(true);
+					txtName.setVisible(true);
+					txtName.setText("");
+					listModel.addElement("Other");
+					txtOtherSkill.setVisible(true);
+					btnSave.setVisible(true);
+				} 
+				
+				else if (buttonADD.getText().equals("Cancel")) 
+				{
+					//cancelNewRobot();
+					buttonADD.setText("New Robot");
+					lblName.setVisible(false);
+					txtName.setVisible(false);
+					listModel.removeElement("Other");
+					btnSave.setVisible(false);
+				}
+			}
+		});
+		
+		
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// addActionListener for the robot btnSave procedure   
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+		
+		
+		btnSave.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				boolean isInsertValid = true;
 				String query = "INSERT INTO ROB (name,"; // name is not in the colNameList, so add it first
 				String colName = "";
@@ -1713,52 +1799,62 @@ public class RobotCapabilities {
 
 					}
 					query += values + ");";
-
+					
+					insertvalue = query;                  
+					//System.out.println( "query value "+ query);
+					//System.out.println( "query value second varioable  "+ insertvalue);
+					
 					if (isInsertValid) {
 						if(q.insertRecord(query)) {
 							insertSuccessful();
+							
 						}
 					}
 				}
-			}
+				
+			} // actionPerformed
 		});
+		
+		
+		
 		btnSave.setBounds(993, 765, 117, 29);
 		RPframe.getContentPane().add(btnSave);
-
+		
 		lblMessage = new JLabel("message");
 		lblMessage.setForeground(Color.RED);
-		lblMessage.setBounds(1122, 767, 270, 23);
-		lblMessage.setVisible(false);
+		lblMessage.setBounds(122, 720, 470, 323);
+		lblMessage.setVisible(true);
 		RPframe.getContentPane().add(lblMessage);
+	//	lblMessage.setText(insertvalue);
 		
-//?????????????????????????????????????????????????????????????????????????????????????????????????????
-//?????????????????????????????????????????????????????????????????????????????????????????????????????	
-//?????????????????????????????????????????????????????????????????????????????????????????????????????
-		
-		btnSave.addActionListener(new ActionListener() 
-		{ public void actionPerformed(ActionEvent arg0) 
-		  { System.out.println(AddRob);
-		  //	AR.InsertRobot(AddRob);
-		    txtrRobotInfo.setText(" Robot was added sussesfully !! ");
-		    //txtname.setText("");
-		   // comboBox.setSelectedIndex(0);    // need to change thos variable 
-		    btnSave.setEnabled(false);
-		  } 
-		});
-		  /////////////////////////////////////////////////////////////////////////////
-		  /////////////////////////////////////////////////////////////////////////////
-		  //////////////////////////// 
-		btnSave.addActionListener(new ActionListener()
-		{ public void actionPerformed(ActionEvent arg0)
-		  { 
-			  String insert = ""; 
 
-			  System.out.println(insert ); 
-			  int response = JOptionPane.showConfirmDialog( null,"Please verify the values of the new robot " + insert, "Adding a robot Confirm", 
+} // end of initialise method
+
+	
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// Procedures used for adding new robot 
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+		/**
+		 *  successfully adding new robot
+		 */
+		
+		protected void insertSuccessful() {
+			buttonADD.doClick();
+			updateSkillsList();	
+			//lblMessage.setText(insertvalue);
+	
+			  int response = JOptionPane.showConfirmDialog( null,"Please verify the values of the new robot " , "Adding a robot Confirm", 
 					  JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); 
 			 if (response == JOptionPane.NO_OPTION) 
 			 {
-				 //System.out.println("modify the values, and try again ");
+				 System.out.println("modify the values, and try again ");
 				 txtrRobotInfo.setText(" modify the values, and try again ");
 				 btnSave.setEnabled(false); 
 				 AddRob = null;
@@ -1768,9 +1864,9 @@ public class RobotCapabilities {
 				System.out.println("Yes button clicked");
 
 				btnSave.setEnabled(true); 
-				AddRob = new
-				Robots();
+				AddRob = new Robots();						// has to be filled, if needed 
 				AddRob.setID(100); 
+				lblMessage.setText("");
 
 			} 
 			else if (response ==  JOptionPane.CLOSED_OPTION)
@@ -1778,70 +1874,31 @@ public class RobotCapabilities {
 				txtrRobotInfo.setText("JOptionPane closed"); 
 				btnSave.setEnabled(false); 
 			} 
-			 
-		  } // action performed 
-		  });
-		 
-		//?????????????????????????????????????????????????????????????????????????????????????????????????????
-////// //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//////// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-////////////////// Search for Robot by Social Cognitive Physical 
-//////// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//////// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		// ######################################################################################
-		// Physical check BOX
-		// JCheckBox
-/* 26		cbPhyscial = new JCheckBox("Physical");
-		cbPhyscial.setBounds(180, 20, 102, 26);
-		RPframe.getContentPane().add(cbPhyscial);
-		cbPhyscial.setForeground(Color.BLUE);
-		cbPhyscial.setBackground(Color.LIGHT_GRAY);
-		cbPhyscial.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		// ######################################################################################
-		// Cognitive check BOX
-		// JCheckBox
-		cbCognitive = new JCheckBox("Cognitive");
-		cbCognitive.setBounds(265, 21, 98, 26);
-		RPframe.getContentPane().add(cbCognitive);
-		cbCognitive.setForeground(Color.RED);
-		cbCognitive.setBackground(Color.LIGHT_GRAY);
-		cbCognitive.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		// ######################################################################################
-		// Social check BOX
-		// JCheckBox
-		cbSocial = new JCheckBox("Social");
-		cbSocial.setBounds(358, 21, 81, 26);
-		RPframe.getContentPane().add(cbSocial);
-		cbSocial.setForeground(new Color(0, 128, 0));
-		cbSocial.setBackground(Color.LIGHT_GRAY);
-		cbSocial.setFont(new Font("Tahoma", Font.PLAIN, 16));
-  26 */		///////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		//cbSocial.addItemListener(new HandlerClass());
-		
-		//cbCognitive.addItemListener(new HandlerClass());
-		
-		//cbPhyscial.addItemListener(new HandlerClass());
-
-
-} // end of initialise method
-
-	/**
-	 * After successfully adding new robot
-	 */
-	protected void insertSuccessful() {
-		buttonADD.doClick();
-		updateSkillsList();
-		JOptionPane.showMessageDialog(null, "New robot added successfully." , "Info",JOptionPane.INFORMATION_MESSAGE);
-	}
-
-	private void updateSkillsList() {
-		listModel.removeAllElements();
-		List<String> skills = q.getRobotSkills();
-		for (String skill : skills) {
-			listModel.addElement(skill);
+			
+			
+			
+			JOptionPane.showMessageDialog(null, "New robot added successfully." , "Info",JOptionPane.INFORMATION_MESSAGE);   
 		}
-	}
+	
+		private void updateSkillsList() {
+			listModel.removeAllElements();
+			List<String> skills = q.getRobotSkills();
+			for (String skill : skills) {
+				listModel.addElement(skill);
+			}
+		}
+
+		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		// Add skill
+		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
 
 	/**
 	 * Add the new skills to the SKILL Table
@@ -1860,23 +1917,14 @@ public class RobotCapabilities {
 	}
 
 	protected void printMessage(String message) {
-//		lblMessage.setVisible(true);
-//		lblMessage.setText(message);
+		lblMessage.setVisible(true);
+		lblMessage.setText(message);
 		JOptionPane.showMessageDialog(null, message , "Error",JOptionPane.ERROR_MESSAGE);
 	}
 
 	protected boolean isTXTEmpty(JTextField txtField) {
 		return txtField.getText().isEmpty();
 	}
-
-	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-	// not used Checkbox
-	private Checkbox addCheckBox(CheckboxGroup cbgModPercep, String value1, boolean selected) {
-		Checkbox checkbox = new Checkbox(value1, cbgModPercep, selected);
-		return checkbox;
-	}
-	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-	// 
 
 	/**
 	 * @param pleaseSelect
@@ -1885,22 +1933,6 @@ public class RobotCapabilities {
 		cmb.addItem(pleaseSelect);
 //		cmb.setSelectedItem(pleaseSelect);
 		cmb.setSelectedIndex(1);
-	}
-
-	private void cancelNewRobot() {
-		buttonADD.setText("New Robot");
-		lblName.setVisible(false);
-		txtName.setVisible(false);
-		listModel.removeElement("Other");
-		btnSave.setVisible(false);
-	}
-
-	private void initNewRobot() {
-		buttonADD.setText("Cancel");
-		lblName.setVisible(true);
-		txtName.setVisible(true);
-		listModel.addElement("Other");
-		btnSave.setVisible(true);
 	}
 
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1912,20 +1944,23 @@ public class RobotCapabilities {
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
 	public static void main(String[] args) {
 
 		//////////////////////////////////////////////////////////////////////////////////////////////
 		//// Splash screen
 		//////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
 		JWindow w = new JWindow();
 		w.getContentPane().add(new JLabel("Splash Screen",
-				// new
-				// ImageIcon("/Users/mlinjawi/eclipse-workspace/RobotCapabilities/ToRCH-1.png"),
-				new ImageIcon("./ToRCH-1.png"), SwingConstants.CENTER));
-		w.setBounds(450, 300, 320, 467);
+			//	new ImageIcon("/Users/mlinjawi/eclipse-workspace/RobotCapabilities/ToRCH-1.png"),SwingConstants.CENTER));
+				new ImageIcon("./ToRCH.png"), SwingConstants.CENTER));
+		w.setBounds(250, 0, 820, 700);
 		w.setVisible(true);
 		try {
-			Thread.sleep(1000); // need to change to 2000
+			Thread.sleep(4000); 
 		} catch (InterruptedException e) {
 			w.dispose();
 		}
@@ -1935,8 +1970,7 @@ public class RobotCapabilities {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					// SplashDemo test = new SplashDemo();
-					// test.Demo();
+
 					RobotCapabilities window = new RobotCapabilities();
 					window.RPframe.setVisible(true);
 					w.dispose();
@@ -1946,85 +1980,7 @@ public class RobotCapabilities {
 			}
 		});
 	}
-	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// Inner class event handler to implement item listener.
-	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-	// JPanel panelRobotInfo, panelPercep, panelInterp, panelTask;
-	// JCheckBox cbPercep, cbInterpretation, cbTask;
-
-/*	private class HandlerClass implements ItemListener 
-		{
-				@Override
-				public void itemStateChanged(ItemEvent e)
-				{ // cbPercep cbInterpretation cbTask
-					if (cbSocial.isSelected())
-					{    // Perception
-							 System.out.println("**** selected social checking perception");
-													//// System.out.println("cbPercep.isSelected()" + cbPercep.isSelected());
-													// System.out.println("cbPercep was selected");
-						for (Component cp : panelPercep.getComponents()) 
-						{   if (cp instanceof JComboBox)
-							{
-								System.out.println("the componant is " + cp.getBackground() + cp.getName());
-								System.out.println("Green " + cp.getForeground().getGreen());
-								System.out.println("blue " + cp.getForeground().getBlue());
-								System.out.println("red " + cp.getForeground().getRed());
-								cp.setEnabled(true);
-							}
-						}
-					}
-					// System.out.println(" print !(cbPercep.isSelected()"+
-					// !(cbPercep.isSelected()));
-					else // if((cbPercep.isSelected())==false)
-					{ // System.out.println("@@@@ not selected per");
-						for (Component cp : panelPercep.getComponents()) 
-						{
-							cp.setEnabled(false);
-						}
-						// System.out.println("cbPercep was not selected");
-					}
-					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				//	if (cbPhyscial.isSelected()) // cbInterpretation
-				/*	{ // Interpretation
-						// System.out.print("***** selected inter");
-						// System.out.println(cbInterpretation.isSelected());
-						// System.out.println(" cbInterpretation was selected");
-						for (Component cint : panelInterp.getComponents()) {
-							cint.setEnabled(true);
-						}
-					} else// if((cbInterpretation.isSelected())==false)
-					{ // System.out.println("@@@@@ not selected inter");
-						for (Component cint : panelInterp.getComponents()) {
-							cint.setEnabled(false);
-						}
-						// System.out.println("cbInterpretation was not selected");
-					}*/
-					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				/*	if (cbCognitive.isSelected()) { // Task cbTask
-												// System.out.print("**** selected task");
-												// System.out.println(cbTask.isSelected());
-												// System.out.println(" cbTask was selected");
-						for (Component ctas : panelTask.getComponents()) {
-							ctas.setEnabled(true);
-						}
-					} else // if((cbTask.isSelected())==false)
-					{ // System.out.println("@@@@@@ not selected task");
-						for (Component ctas : panelTask.getComponents()) {
-							ctas.setEnabled(false);
-						}
-						// System.out.println("cbTask was not selected");
-					}*/
-					// System.out.println("%%%%%%%%%%%%%%%%%%%%%%%");
-					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	//			} // itemStateChanged
-//	}// HandlerClass
-
+	
 } // end of class RobotCapabilities
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+

@@ -1,20 +1,6 @@
 package Model;
 
 public class Robots {
-//	private int id;
-//	private String name;
-//	private String socialtype;
-//	private int mobile;
-//	private int manipulating;
-//	private int proximity_inter;
-//	private int embodiment;
-//	private int identify;
-//	private int learn;
-//	private int aim;
-//	private int inter_structure;
-//	private int social_comm;
-//	private int Behavior ;
-//	private int emotion;
 
 //Rob table
 	private int Id;
@@ -704,53 +690,3 @@ public class Robots {
 	}
 
 }
-
-//********************************************************************
-/*
- * public void setsocialtype(String Rsocialtype) {socialtype = Rsocialtype; }
- * public String getsocialtype() {return socialtype; }
- * 
- * public void setmobile(int i) {mobile = i; } public int getmobile() {return
- * mobile; }
- * 
- * public void setmanipulating(int Rmanipulating) {manipulating = Rmanipulating;
- * } public int getmanipulating() {return manipulating; }
- * 
- * public void setproximity_inter(int Rproximity_inter) {proximity_inter =
- * Rproximity_inter; } public int getproximity_inter() {return proximity_inter;
- * }
- * 
- * public void setembodiment(int Rembodiment) {embodiment = Rembodiment; }
- * public int getembodiment() {return embodiment; }
- * 
- * public void setidentify(int Ridentify) {identify = Ridentify; } public int
- * getidentify() {return identify; }
- * 
- * public void setlearn(int Rlearn) {learn = Rlearn; } public int getlearn()
- * {return learn; }
- * 
- * public void setaim(int Raim) {aim = Raim; } public int getaim() {return aim;
- * }
- * 
- * public void setinter_structure(int Rinter_structure) {inter_structure =
- * Rinter_structure; } public int getinter_structure() {return inter_structure;
- * }
- * 
- * public void setsocial_comm(int Rsocial_comm) {social_comm = Rsocial_comm; }
- * public int getsocial_comm() {return social_comm; }
- * 
- * public void setbehaviour(int Rbehavior) {Behavior = Rbehavior; } public int
- * getbehaviour() {return Behavior ; }
- * 
- * public void setemotion(int Remotion) {emotion = Remotion; } public int
- * getemotion() {return emotion; }
- * 
- */
-//********************************************************************
-/*
- * id = Rid; name = Rname; socialtype = Rsocialtype; mobile = Rmobile;
- * manipulating = Rmanipulating; proximity_inter = Rproximity_inter; embodiment
- * = Rembodiment; identify = Ridentify; learn = Rlearn; aim = Raim;
- * inter_structure = Rinter_structure; social_comm = Rsocial_comm; Behavior =
- * Rbehavior ; emotion = Remotion;
- */
